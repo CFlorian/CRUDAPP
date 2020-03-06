@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">CRUDAPP</string>
+    <string name="sex_masculino">MASCULINO</string>
+    <string name="sex_femenino">FEMENINO</string>
+    <string name="guardar_contacto">GUARDAR CONTACTO</string>
+    <string name="nombre">NOMBRE</string>
+    <string name="fecha_nacimiento">FECHA NACIMIENTO</string>
+    <string name="telefono">TELEFONO</string>
+    <string name="sexo">SEXO</string>
+    <string name="ver_contactos">VER CONTACTOS</string>
+</resources>
