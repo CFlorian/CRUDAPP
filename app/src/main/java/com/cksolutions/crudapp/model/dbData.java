@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class dbData {
 
@@ -58,6 +60,36 @@ public class dbData {
         db.close();
         return my_array;
     }
+
+    public void eliminar_contacto(String numero) {
+        SQLiteDatabase db;
+        db = conn.getWritableDatabase();
+        String strSql;
+        strSql = "";
+        strSql += "DELETE FROM contacto WHERE Telefono ='"+ numero +"'";
+        db.execSQL(strSql);
+        db.close();
+
+    }
+
+
+    public ArrayList<Map> getContactosList (){
+        SQLiteDatabase db = conn.getWritableDatabase();
+        ArrayList<Map> mapArrayList = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT Nombre, Telefono FROM contacto ", null);
+        if(cursor.moveToFirst()){
+            do{
+                Map<String, String> contacto = new HashMap<>();
+                contacto.put("nombre", cursor.getString(0));
+                contacto.put("telefono", cursor.getString(1));
+                mapArrayList.add(contacto);
+            }while(cursor.moveToNext());
+        }
+        db.close();
+        return mapArrayList;
+    }
+
+
 
     class DBHelper extends SQLiteOpenHelper {
         public DBHelper(Context context) {
